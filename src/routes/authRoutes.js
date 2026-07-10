@@ -4,8 +4,13 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
 // Helper to generate Token
+//  CORRECT: Remove 'next' and just throw the error
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
+  try {
+    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
+  } catch (error) {
+    throw new Error('Token generation failed');
+  }
 };
 
 // @route   POST /api/auth/register
