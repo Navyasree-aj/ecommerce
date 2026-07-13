@@ -13,12 +13,14 @@ const UserSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-// Pre-save hook to hash password before storing
-UserSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
+//  FIXED: Removed 'next' completely. Modern Mongoose automatically 
+// handles the flow when an async function resolves its Promise!
+UserSchema.pre('save', async function () {
+  // If the password hasn't been changed, exit the function early
+  if (!this.isModified('password')) return;
+
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
-  next();
 });
 
 // Helper method to verify passwords later
