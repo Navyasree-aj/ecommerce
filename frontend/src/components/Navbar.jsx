@@ -1,34 +1,110 @@
-import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-export const Navbar = () => {
+export function Navbar() {
+  const navLinkClass = ({ isActive }) =>
+    `font-semibold transition-colors ${
+      isActive
+        ? 'text-primary font-bold'
+        : 'text-on-surface-variant hover:text-primary-container'
+    }`;
+
   return (
-    <header className="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant">
-      <div className="flex justify-between items-center px-4 md:px-10 py-2 max-w-[1280px] mx-auto">
-        <div className="flex items-center gap-1 text-primary transition-transform scale-95 active:opacity-80 cursor-pointer">
-          <span 
-            className="material-symbols-outlined font-bold text-2xl" 
-            style={{ fontVariationSettings: "'FILL' 0" }}
+    <header className="w-full border-b border-outline-variant/40 bg-background">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+
+        {/* Logo */}
+        <NavLink
+          to="/"
+          className="flex items-center gap-2 text-primary"
+          aria-label="CraftLocal home"
+        >
+          <span
+            className="material-symbols-outlined text-3xl"
+            aria-hidden="true"
           >
             location_on
           </span>
-          <span className="font-headline font-bold text-3xl">CraftLocal</span>
-        </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6">
-          <a className="text-on-surface-variant font-semibold hover:text-primary-container transition-colors" href="#">Shop</a>
-          <a className="text-primary font-bold hover:text-primary-container transition-colors" href="#">Explore</a>
-          <a className="text-on-surface-variant font-semibold hover:text-primary-container transition-colors" href="#">Wishlist</a>
-          <a className="text-on-surface-variant font-semibold hover:text-primary-container transition-colors" href="#">Cart</a>
+          <span className="font-headline text-2xl font-bold tracking-tight">
+            CraftLocal
+          </span>
+        </NavLink>
+
+        {/* Desktop Navigation */}
+        <nav
+          className="hidden items-center gap-8 md:flex"
+          aria-label="Main navigation"
+        >
+          <NavLink to="/products" className={navLinkClass}>
+            Shop
+          </NavLink>
+
+          <NavLink to="/categories" className={navLinkClass}>
+            Explore
+          </NavLink>
+
+          <NavLink to="/wishlist" className={navLinkClass}>
+            Wishlist
+          </NavLink>
+
+          <NavLink to="/cart" className={navLinkClass}>
+            Cart
+          </NavLink>
+
+          <NavLink to="/checkout" className={navLinkClass}>
+            Checkout
+          </NavLink>
         </nav>
 
-        {/* Mobile Search Button */}
-        <div className="md:hidden flex items-center gap-3">
-          <button className="p-2 text-on-surface-variant hover:text-primary-container transition-colors">
-            <span className="material-symbols-outlined">search</span>
+        {/* Actions */}
+        <div className="flex items-center gap-2">
+
+          {/* Search */}
+          <button
+            type="button"
+            className="rounded-full p-2 text-on-surface-variant transition-colors hover:bg-surface-container hover:text-primary"
+            aria-label="Search"
+          >
+            <span
+              className="material-symbols-outlined"
+              aria-hidden="true"
+            >
+              search
+            </span>
           </button>
+
+          {/* Profile */}
+          <NavLink
+            to="/profile"
+            className="rounded-full p-2 text-on-surface-variant transition-colors hover:bg-surface-container hover:text-primary"
+            aria-label="Profile"
+          >
+            <span
+              className="material-symbols-outlined"
+              aria-hidden="true"
+            >
+              person
+            </span>
+          </NavLink>
+
+          {/* Mobile menu placeholder */}
+          <button
+            type="button"
+            className="rounded-full p-2 text-on-surface-variant transition-colors hover:bg-surface-container hover:text-primary md:hidden"
+            aria-label="Open menu"
+          >
+            <span
+              className="material-symbols-outlined"
+              aria-hidden="true"
+            >
+              menu
+            </span>
+          </button>
+
         </div>
       </div>
     </header>
   );
-};
+}
+
+export default Navbar;
