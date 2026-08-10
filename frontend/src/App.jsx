@@ -1,13 +1,20 @@
-// src/App.jsx
-import React from 'react'
-import { ProductDetailPage } from './pages/ProductDetailPage'
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
+import { Navbar } from './components/Navbar';
+import Footer from './components/Footer';
+import AppRoutes from './routes/AppRoutes';
+
+export default function App() {
   return (
-    <div className="min-h-screen bg-background font-body text-on-background">
-      <ProductDetailPage />
-    </div>
-  )
-}
+    <BrowserRouter>
+      <Navbar />
 
-export default App;
+      <main>
+        <AppRoutes />
+      </main>
+
+      <Footer />
+    </BrowserRouter>
+  );
+}
