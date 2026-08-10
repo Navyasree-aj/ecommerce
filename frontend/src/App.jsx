@@ -1,11 +1,12 @@
-// src/App.jsx
-import React from 'react'
-import { ProductDetailPage } from './pages/ProductDetailPage'
+import React from 'react';
+import CheckoutPage from './pages/checkout/CheckoutPage';
 
-export default function App() {
+function App() {
   return (
-    <div className="min-h-screen bg-background font-body text-on-background">
-      <ProductDetailPage />
+    <div className="App">
+      <CheckoutPage />
     </div>
-  )
+  );
 }
+
+export default App;
