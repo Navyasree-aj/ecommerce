@@ -60,6 +60,13 @@ export function Footer() {
               >
                 Wishlist
               </NavLink>
+
+              <NavLink
+                to="/checkout"
+                className="text-sm text-on-surface-variant transition-colors hover:text-primary"
+              >
+                Checkout
+              </NavLink>
             </nav>
           </div>
 

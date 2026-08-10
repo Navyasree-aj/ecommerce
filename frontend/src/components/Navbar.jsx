@@ -50,6 +50,10 @@ export function Navbar() {
           <NavLink to="/cart" className={navLinkClass}>
             Cart
           </NavLink>
+
+          <NavLink to="/checkout" className={navLinkClass}>
+            Checkout
+          </NavLink>
         </nav>
 
         {/* Actions */}
