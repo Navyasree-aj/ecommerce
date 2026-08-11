@@ -1,0 +1,526 @@
+/* ==========================================
+   Global Reset & Page Overflow Fixes
+   ========================================== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================
+   Container & Base Layout
+   ========================================== */
+.app-page {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: #fdfbf7;
+  color: #2c2c2c;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Update navbar to fill screen width */
+.navbar-inner, header nav {
+  max-width: 90%; /* Expanded from fixed px limit */
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-main {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.home-hero, 
+.home-section, 
+.artisan-banner {
+  width: 100%;
+}
+
+/* ==========================================
+   Material Icons Alignment
+   ========================================== */
+.material-symbols-outlined {
+  font-size: 1.25rem;
+  vertical-align: middle;
+}
+
+/* ==========================================
+   Buttons & Links
+   ========================================== */
+.primary-button {
+  background-color: #2d5a27;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.primary-button:hover {
+  background-color: #1e3d1a;
+}
+
+.secondary-button {
+  background-color: transparent;
+  color: #2d5a27;
+  border: 2px solid #2d5a27;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.secondary-button:hover {
+  background-color: #eaf2e8;
+}
+
+.text-link {
+  color: #2d5a27;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* ==========================================
+   Hero Section
+   ========================================== */
+.home-hero {
+  position: relative;
+  background-color: #f4efe6;
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  overflow: hidden;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eyebrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #8c6d46;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text h1 {
+  font-size: 2.75rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero-text h1 span {
+  color: #2d5a27;
+}
+
+.hero-text p {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  font-size: 1.05rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-art {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-main-image {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.hero-main-image img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.image-label {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.hero-small-card {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  background: #ffffff;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==========================================
+   Sections Heading
+   ========================================== */
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #8c6d46;
+}
+
+.section-heading h2 {
+  font-size: 1.75rem;
+  margin-top: 0.25rem;
+}
+
+/* ==========================================
+   Category Grid
+   ========================================== */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.category-card {
+  background: #ffffff;
+  border: 1px solid #e2ded7;
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.category-icon {
+  background: #f4efe6;
+  color: #2d5a27;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.category-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.category-arrow {
+  color: #8c6d46;
+  font-size: 1rem;
+  margin-top: auto;
+}
+
+/* ==========================================
+   Product Cards Grid
+   ========================================== */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  background: #ffffff;
+  border: 1px solid #e2ded7;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+}
+
+.product-image-wrapper {
+  position: relative;
+  height: 220px;
+  width: 100%;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.distance-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.favorite-product {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ffffff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.product-content {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.artisan-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.verified-icon {
+  font-size: 1rem;
+  color: #2d5a27;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.stars {
+  color: #f59e0b;
+  display: flex;
+}
+
+.stars .filled {
+  font-size: 1rem;
+}
+
+.rating-number {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.product-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.product-price {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.add-cart-button {
+  background: #2d5a27;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ==========================================
+   Artisan CTA Banner
+   ========================================== */
+.artisan-banner {
+  background-color: #2d5a27;
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.artisan-banner .section-label {
+  color: #d1e7dd;
+}
+
+.artisan-banner h2 {
+  font-size: 2rem;
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+.artisan-banner p {
+  color: #e2ded7;
+  font-size: 1.05rem;
+}
+
+.artisan-banner .primary-button {
+  background-color: #ffffff;
+  color: #2d5a27;
+  white-space: nowrap;
+}
+
+.artisan-banner .primary-button:hover {
+  background-color: #f4efe6;
+}
+
+@media (max-width: 600px) {
+  .artisan-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ==========================================
+   Navbar Styles
+   ========================================== */
+header, .navbar-container {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2ded7;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-inner, header nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header a:first-child, .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #2d5a27;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+header nav, .navbar-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+header nav a, .navbar-links a {
+  text-decoration: none;
+  color: #4a4a4a;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+header nav a:hover, .navbar-links a:hover {
+  color: #2d5a27;
+}
+
+.account-link, header a:last-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: #2c2c2c;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background-color: #f4efe6;
+  transition: background-color 0.2s ease;
+}
+
+.account-link:hover, header a:last-child:hover {
+  background-color: #e6dfd3;
+}
