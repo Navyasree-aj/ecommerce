@@ -1,4 +1,9 @@
+```css
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Material+Symbols+Outlined:FILL@0..1&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #fcf9f8;
@@ -7,9 +12,9 @@
   --surface-container: #f0eded;
   --white: #ffffff;
 
-    --primary: #9A4F32;
-    --primary-container: #B85A32;
-    --primary-fixed: #ffdbcf;
+  --primary: #9A4F32;
+  --primary-container: #B85A32;
+  --primary-fixed: #ffdbcf;
 
   --secondary: #376847;
   --secondary-container: #b6edc2;
@@ -21,7 +26,7 @@
   --outline: #8a726a;
   --outline-variant: #dec0b7;
 
-
+  --max-width: 1440px;
 }
 
 * {
@@ -111,7 +116,7 @@ a {
   align-items: center;
   gap: 8px;
 
-   color: #8F503A;
+  color: #8F503A;
   font-family: "Manrope", sans-serif;
   font-size: 28px;
   font-weight: 800;
@@ -867,7 +872,7 @@ a {
 }
 
 /* =========================
-   PROMO CARD (Become a Maker)
+   PROMO CARD
 ========================= */
 
 .promo-card {
@@ -1351,3 +1356,4 @@ a {
     font-size: 17px;
   }
 }
+```
