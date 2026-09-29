@@ -55,6 +55,13 @@ export function Footer() {
               </NavLink>
 
               <NavLink
+                to="/checkout"
+                className="text-sm text-on-surface-variant transition-colors hover:text-primary"
+              >
+                Checkout
+              </NavLink>
+
+              <NavLink
                 to="/wishlist"
                 className="text-sm text-on-surface-variant transition-colors hover:text-primary"
               >
